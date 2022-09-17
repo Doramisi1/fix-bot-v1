@@ -36,7 +36,7 @@ export async function handler(chatUpdate) {
         if (!m)
             return
         m.exp = 0
-        m.limit = false
+        m.limit = true
         try {
             // TODO: use loop to insert data instead of this
             let user = global.db.data.users[m.sender]
@@ -52,7 +52,7 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.pasangan))
                     user.pasangan = ''
                 if (!('registered' in user))
-                    user.registered = false
+                    user.registered = true
                 if (!user.registered) {
                     if (!('name' in user))
                         user.name = m.name
@@ -70,7 +70,7 @@ export async function handler(chatUpdate) {
                 if (!isNumber(user.warn))
                     user.warn = 0
                 if (!isNumber(user.level))
-                    user.level = 0
+                    user.level = 1
                 if (!('role' in user))
                     user.role = 'Beginner'
                 if (!('autolevelup' in user))
@@ -204,7 +204,7 @@ export async function handler(chatUpdate) {
                     exp: 0,
                     limit: 1000,
                     lastclaim: 0,
-                    registered: false,
+                    registered: true,
                     name: m.name,
                     pasangan: '',
                     age: -1,
@@ -213,7 +213,7 @@ export async function handler(chatUpdate) {
                     afkReason: '',
                     banned: false,
                     warn: 0,
-                    level: 0,
+                    level: 1,
                     role: 'Beginner',
                     autolevelup: true,
 
@@ -299,7 +299,7 @@ export async function handler(chatUpdate) {
                 if (!('sDemote' in chat))
                     chat.sDemote = 'kasihan jadi member biasa'
                 if (!('delete' in chat))
-                    chat.delete = false
+                    chat.delete = true
                 if (!('antiLink' in chat))
                     chat.antiLink = false
                 if (!('viewonce' in chat))
@@ -324,7 +324,7 @@ export async function handler(chatUpdate) {
                     sPromote: 'selamat kamu naik pangkat',
                     sDemote: 'kasihan jadi member biasa',
                     delete: false,
-                    antiLink: false,
+                    antiLink: true,
                     viewonce: false,
                     antiToxic: true,
                     simi: false,
@@ -338,13 +338,13 @@ export async function handler(chatUpdate) {
                 if (!('self' in settings)) settings.self = false
                 if (!('autoread' in settings)) settings.autoread = false
                 if (!('restrict' in settings)) settings.restrict = true
-                if (!('jadibot' in settings)) settings.jadibot = true
+                if (!('jadibot' in settings)) settings.jadibot = false
                 if (!('autorestart' in settings)) settings.autorestart = true
                 if (!('restartDB' in settings)) settings.restartDB = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: false,
-                jadibot: true,
+                jadibot: false,
                 restrict: true,
                 autorestart: true,
                 restartDB: 0
